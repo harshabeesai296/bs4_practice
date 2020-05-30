@@ -1,0 +1,68 @@
+from urllib.request import urlopen
+from bs4 import BeautifulSoup
+html = urlopen("https://en.wikipedia.org/wiki/Roger_Federer")
+bsObj = BeautifulSoup(html)
+for link in bsObj.findAll("a"):
+  if 'href' in link.attrs:
+    print(link.attrs['href'])
+    
+    
+    
+    
+ from urllib.request import urlopen
+from bs4 import BeautifulSoup
+import re
+
+html = urlopen('https://en.wikipedia.org/wiki/Roger_Federer')
+bs = BeautifulSoup(html, 'html.parser')
+images = bs.find_all('img', {'src':re.compile('.jpg')})
+for image in images:
+    print(image['src']+'\n')
+    
+    
+    
+    
+    
+    
+ html = urlopen('https://en.wikipedia.org/wiki/Roger_Federer')
+bs = BeautifulSoup(html, 'html.parser')
+images = bs.find_all('img', {'src':re.compile('.jpg')})
+mylinks = []
+for image in images:
+    mylinks.append(image['src'])
+#print(mylinks)
+mylinks = ["https:" + e for e in mylinks]
+print(mylinks)
+txtlist = ['first', 'second', 'third', 'fourtth', 'fifth', 'sixth', 'seventh', 'eigth', 'nineth', 'tenth', 'eleventh']
+nams = ['firstt', 'secondd', 'thirdd', 'fourthh', 'fifthh', 'sixthh', 'seventhh', 'eigthh', 'ninethh', 'tenthh', 'eleventhh']
+
+for links in mylinks:
+    lgt = len(mylinks)
+    req = requests.get(links, stream=False)
+    req.raise_for_status()
+
+    for names in txtlist:
+        for chunk in req.iter_content(chunk_size=128000):
+            with open(names, 'wb') as fd:
+                fd.write(chunk)
+
+
+
+
+from urllib.request import urlopen
+from bs4 import BeautifulSoup
+import re
+import requests
+html = urlopen('https://unsplash.com/s/photos/web')
+bs = BeautifulSoup(html, 'html.parser')
+images = bs.find_all('img', {'src':re.compile('.jpg')})
+mylinks = []
+for image in images:
+    mylinks.append(image['src'])
+
+print(mylinks)
+print(len(mylinks))
+
+
+
+
